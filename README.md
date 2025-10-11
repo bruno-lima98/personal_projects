@@ -24,9 +24,9 @@ Each folder in this repository contains one standalone project, complete with co
 
 ## 🧩 Project List
 
-| Project | Description | Key Topics |
-|----------|--------------|-------------|
-| [Startup Shutdown](./project-name-1) | Predicting startup failure using Logistic Regression | Machine Learning, Logistic Regression |
+| nº |Project | Description | Key Topics |
+| -- |----------------|----------------|---------------|
+| 01 |[Startup Shutdown](./project-name-1) | Predicting startup failure using Logistic Regression | Machine Learning, Logistic Regression |
 
 *(This section will be updated as new projects are added.)*
 
