@@ -20,12 +20,24 @@ Additionally, given my background in fintech and experience analyzing risk and p
 ## 2. Data Source
 
 For this project, I used a publicly available dataset from Kaggle.  
-[Startup Failure Prediction Dataset](https://www.kaggle.com/datasets/sakharebharat/startup-failure-prediction-dataset)  
+[Startup Failure Prediction Dataset](https://www.kaggle.com/datasets/dagloxkankwanda/startup-failures/data)  
 
 ### Columns Description
-- ****startup_name****: Name of the startup  
-- ****funding_total_usd****: Total funding received by the startup in USD  
-- ****num_employees****: Number of employees (you can fill in more columns below)  
-- ****sector****: Industry sector of the startup  
-- ****country****: Country where the startup is based  
-- ****failure****: Target variable, 1 if the startup failed within X years, 0 otherwise
+- **Startup_Name**: Identifier of the startup.  
+- **Industry**: Industry or sector in which the startup operates.  
+- **Startup_Age**: Age of the startup in years.  
+- **Funding_Amount**: Total funding received by the startup in USD.  
+- **Number_of_Founders**: Number of founders of the startup.  
+- **Founder_Experience**: Work experience of the founders.  
+- **Employees_Count**: Number of employees in the startup.  
+- **Revenue**: Annual revenue of the startup in USD.  
+- **Burn_Rate**: Monthly cash burn rate of the startup in USD.  
+- **Market_Size**: Estimated size of the target market in categories.  
+- **Business_Model**: Type of business model.. 
+- **Product_Uniqueness_Score**: A score representing how unique or differentiated the product is (1-10).  
+- **Customer_Retention_Rate**: Percentage of customers retained over a given period.  
+- **Marketing_Expense**: Annual spending on marketing in USD.  
+- **Startup_Status**: 
+    - Target variable.
+    - 1: Successful of the Startup.
+    - 0: The startup failed.
