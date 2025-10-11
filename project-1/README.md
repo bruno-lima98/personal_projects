@@ -20,24 +20,39 @@ Additionally, given my background in fintech and experience analyzing risk and p
 ## 2. Data Source
 
 For this project, I used a publicly available dataset from Kaggle.  
-[Startup Failure Prediction Dataset](https://www.kaggle.com/datasets/dagloxkankwanda/startup-failures/data)  
+[Startup Failure Prediction Dataset](https://www.kaggle.com/datasets/siddarthareddyt/startup-analysis-dataset)  
 
 ### Columns Description
-- **Startup_Name**: Identifier of the startup.  
-- **Industry**: Industry or sector in which the startup operates.  
-- **Startup_Age**: Age of the startup in years.  
-- **Funding_Amount**: Total funding received by the startup in USD.  
-- **Number_of_Founders**: Number of founders of the startup.  
-- **Founder_Experience**: Work experience of the founders.  
-- **Employees_Count**: Number of employees in the startup.  
-- **Revenue**: Annual revenue of the startup in USD.  
-- **Burn_Rate**: Monthly cash burn rate of the startup in USD.  
-- **Market_Size**: Estimated size of the target market in categories.  
-- **Business_Model**: Type of business model.. 
-- **Product_Uniqueness_Score**: A score representing how unique or differentiated the product is (1-10).  
-- **Customer_Retention_Rate**: Percentage of customers retained over a given period.  
-- **Marketing_Expense**: Annual spending on marketing in USD.  
-- **Startup_Status**: 
-    - Target variable.
-    - 1: Successful of the Startup.
-    - 0: The startup failed.
+Here are the final columns used in the analysis and modeling:
+
+- **category_list**: Categorical variable representing the startup's industry or sector.
+- **funding_total_usd**: Numerical variable indicating the total funding in Milion USD received by the startup (log-transformed to reduce skewness and handle outliers).
+- **state_code**: Categorical variable representing the US state where the startup is located.
+- **funding_rounds**: Numerical variable representing the number of funding rounds the startup has completed (log-transformed).
+- **number_of_investors**: Numerical variable representing the total number of investors for the startup (log-transformed).
+- **startup_age**: Numerical variable representing the age of the startup in years (calculated from `founded_at` and log-transformed).
+- **status_binary**: Binary target variable indicating startup failure (1 = closed, 0 = operating, acquired, or IPO).
+
+## 3. Data Cleaning & Preprocessing
+
+The dataset has been cleaned and prepared for analysis and modeling. Key steps include:
+
+1. **Missing values**  
+   - Dropped rows with missing values in categorical columns (`category_list`, `state_code`, `status`).  
+   - Only ~45 rows removed out of ~13,000, so the data loss is minimal.
+
+2. **Target binarization**  
+   - Created `status_binary` column (1 = closed/failure, 0 = operating/acquired/IPO).
+
+3. **Column drops**  
+   - Removed `country_code` (all startups are from the USA).  
+   - Removed `city` (high cardinality, not useful for modeling).
+
+4. **Numerical features**  
+   - Applied `log1p` transformation to reduce skewness in the following columns:  
+     - `funding_total_usd`  
+     - `funding_rounds`  
+     - `number_of_investors`  
+     - `startup_age`  
+
+## 4. Exploratory Data Analysis (EDA)
