@@ -26,7 +26,7 @@ Each folder in this repository contains one standalone project, complete with co
 
 | nº |Project | Description | Key Topics |
 | -- |----------------|----------------|---------------|
-| 01 |[Startup Shutdown](./project-name-1) | Predicting startup failure using Logistic Regression | Machine Learning, Logistic Regression |
+| 01 |[Startup Shutdown](https://github.com/bruno-lima98/personal_projects/tree/main/project-1) | Predicting startup failure using Logistic Regression | Machine Learning, Logistic Regression |
 
 *(This section will be updated as new projects are added.)*
 
