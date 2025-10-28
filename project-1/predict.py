@@ -1,41 +1,57 @@
-import pickle
 import pandas as pd
+import pickle
+from preprocessing import preprocess_data
+from model_wrapper import StartupFailureModel
 
-with open('model_C=0.1.bin', 'rb') as f_in:
+with open("model_C=0.1.bin", "rb") as f_in:
     model_wrapper = pickle.load(f_in)
 
-startup = pd.DataFrame({
-    'funding_total_usd': [1000000],
-    'funding_rounds': [2],
-    'founded_year': [2018],
-    'founded_month': [5],
-    'first_funding_year': [2018],
-    'first_funding_month': [6],
-    'last_funding_year': [2019],
-    'last_funding_month': [3],
-    'months_to_first_funding': [1.1],
-    'funding_duration_months': [21.0],
-    'received_seed': [1],
-    'received_venture': [0],
-    'received_equity_crowdfunding': [0],
-    'received_undisclosed': [0],
-    'received_convertible_note': [0],
-    'received_debt_financing': [0],
-    'received_angel': [0],
-    'received_grant': [0],
-    'received_private_equity': [0],
-    'received_post_ipo_equity': [0],
-    'received_post_ipo_debt': [0],
-    'received_secondary_market': [0],
-    'received_product_crowdfunding': [0],
-    'founded_missing': [0],
-    'market': ['software'],
-    'state_code': ['ca']
-})
+startup = pd.DataFrame([{
+    "permalink": "/organization/waywire",
+    "name": "#waywire",
+    "homepage_url": "http://www.waywire.com",
+    "category_list": "|Entertainment|Politics|Social Media|News|",
+    "market": "News",
+    "funding_total_usd": " 17,50,000 ",
+    "status": "acquired",
+    "country_code": "USA",
+    "state_code": "NY",
+    "region": "New York",
+    "city": "New York",
+    "funding_rounds": 1,
+    "founded_at": "2012-06-01",
+    "founded_month": "2012-06",
+    "founded_quarter": "2012-Q2",
+    "founded_year": 2012,
+    "first_funding_at": "2012-06-30",
+    "last_funding_at": "2012-06-30",
+    "seed": 1750000,
+    "venture": 0,
+    "equity_crowdfunding": 0,
+    "undisclosed": 0,
+    "convertible_note": 0,
+    "debt_financing": 0,
+    "angel": 0,
+    "grant": 0,
+    "private_equity": 0,
+    "post_ipo_equity": 0,
+    "post_ipo_debt": 0,
+    "secondary_market": 0,
+    "product_crowdfunding": 0,
+    "round_A": 0,
+    "round_B": 0,
+    "round_C": 0,
+    "round_D": 0,
+    "round_E": 0,
+    "round_F": 0,
+    "round_G": 0,
+    "round_H": 0
+}])
 
-pred_class = model_wrapper.predict(startup)
-pred_proba = model_wrapper.predict_proba(startup)
+df_processed, cat_cols, num_cols = preprocess_data(startup)
 
-print("input ", startup)
+pred_class = model_wrapper.predict(df_processed)
+pred_proba = model_wrapper.predict_proba(df_processed)
+
 print("Predict Class: ", pred_class)
-print("Probability of Failure: ", pred_proba)
+print("Probability of Failure: ", pred_proba.round(4))
