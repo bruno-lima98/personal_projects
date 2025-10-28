@@ -1,0 +1,13 @@
+# Ignorar checkpoints do Jupyter
+**/.ipynb_checkpoints/
+
+# Ignorar arquivos temporários do Python
+__pycache__/
+*.pyc
+
+# Ignorar ambientes virtuais
+.venv/
+venv/
+
+# Ignorar configs locais do VSCode
+.vscode/
