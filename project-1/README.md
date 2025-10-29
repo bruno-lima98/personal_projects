@@ -20,49 +20,65 @@
 </p>
 
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
 
-#### **2. Predicted Probability Histogram*:**  
+#### **2. Predicted Probability Histogram:**  
 <p align="center">
-  <img src="images/roc_curve.png" width="300">
+  <img src="images/pred_probs.png" width="300">
 </p>
 
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+The histogram shows the distribution of predicted probabilities for both classes. Ideally, we expect two clearly separated peaks, one near 0 (active startups) and another near 1 (failed startups).
+
+In this model, the peaks are distinguishable but overlap slightly, suggesting that while most predictions are accurate, there remains some uncertainty in borderline cases.
 
 #### **3. Precision-Recall Curve:**  
 <p align="center">
-  <img src="images/roc_curve.png" width="300">
+  <img src="images/precision_recall_curve.png" width="300">
 </p>
 
+The Precision-Recall curve illustrates how the model balances identifying failed startups (recall) while keeping predictions accurate (precision).
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+The curve starts with very high precision for a small subset of predictions, then gradually declines as recall increases, stabilizing around moderate precision at full recall.
+
+This behavior indicates that the model is particularly confident in detecting clear failure cases, while uncertainty increases for borderline startups.
 
 #### **4. Calibration Curve:**  
 <p align="center">
-  <img src="images/roc_curve.png" width="300">
+  <img src="images/calibration_curve.png" width="300">
 </p>
 
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+The calibration curve compares the model’s predicted probabilities with the actual observed outcomes.
+
+We see that the curve stays slightly below the diagonal, meaning the model tends to be under-confident, it predicts slightly lower probabilities than the true likelihood of startup failure.
+Still, the curve follows the ideal line fairly closely, indicating that the model’s probability estimates are generally well-calibrated.
 
 #### **5. F1-Score Otimization:**  
 <p align="center">
-  <img src="images/roc_curve.png" width="300">
+  <img src="images/f1_score_vs_threshold.png" width="300">
 </p>
 
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+This plot illustrates how the F1 score changes as we vary the classification threshold.
+
+We observe a clear peak around the optimal threshold, where the balance between precision and recall is maximized.
+
+The red dashed line marks this best point (~0.43), but for practical consistency across models, we keep the threshold at 0.5, accepting a slightly lower F1 in exchange for a more interpretable and standardized decision boundary.
 
 #### **6. Confusion Matrix:**  
 <p align="center">
-  <img src="images/roc_curve.png" width="300">
+  <img src="images/confusion_matrix.png" width="300">
 </p>
 
 
-> The ROC curve shows how well the model distinguishes between active and failed startups. With an AUC of 0.749, the model demonstrates good discriminatory power. A perfect model would reach the top-left corner.
+We can see that the model correctly identifies a majority of both active (360/548) and failed (313/426) startups.
 
-**Takeaway:**  
+There are some misclassifications, with slightly more active startups incorrectly labeled as failed (188) than failed startups mislabeled as active (113).
+
+Overall, the model demonstrates a reasonable balance between sensitivity (recall for failed startups) and specificity (recall for active startups).
+
+#### **Takeaway:**  
 - Higher total funding, more funding rounds, and certain markets/states are associated with lower failure risk.  
 - Logistic regression provides a stable, interpretable model with reasonable predictive performance.
 
