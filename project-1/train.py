@@ -37,7 +37,9 @@ C_final = 0.1
 penalty_final = 'l2'
 max_iter_final = 10000
 random_state_final = 42
-output_file = f'model_C={C_final}.bin'
+
+output_dir = os.path.dirname(__file__)
+output_file = os.path.join(output_dir, f"model_C={C_final}.bin")
 
 print("\n================================================")
 print("Starting Machine Learning model training...")

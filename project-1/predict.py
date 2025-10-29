@@ -1,9 +1,11 @@
 import pandas as pd
+import os
 import pickle
 from preprocessing import preprocess_data
 from model_wrapper import StartupFailureModel
 
-with open("model_C=0.1.bin", "rb") as f_in:
+model_path = os.path.join(os.path.dirname(__file__), "model_C=0.1.bin")
+with open(model_path, "rb") as f_in:
     model_wrapper = pickle.load(f_in)
 
 startup = pd.DataFrame([{
